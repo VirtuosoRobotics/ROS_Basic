@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
 )
 
 
@@ -49,11 +50,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  Num.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -70,10 +70,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -139,6 +139,9 @@ include_directories(
 add_executable(cpp_publisher src/cpp_pub.cpp)
 add_executable(cpp_subscriber src/cpp_sub.cpp)
 
+add_executable(cpp_msg_pub src/cpp_msg_pub.cpp)
+add_executable(cpp_msg_sub src/cpp_msg_sub.cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -154,6 +157,13 @@ target_link_libraries(cpp_publisher
  ${catkin_LIBRARIES}
 )
 target_link_libraries(cpp_subscriber
+ ${catkin_LIBRARIES}
+)
+
+target_link_libraries(cpp_msg_pub
+ ${catkin_LIBRARIES}
+)
+target_link_libraries(cpp_msg_sub
  ${catkin_LIBRARIES}
 )
 
