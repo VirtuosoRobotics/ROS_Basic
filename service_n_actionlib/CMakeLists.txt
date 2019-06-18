@@ -63,11 +63,10 @@ add_service_files(
 )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  FILES
+  Fibonacci.action
+)
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
@@ -136,11 +135,17 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(server_example src/server_example.cpp)
-add_executable(client_example src/client_example.cpp)
+add_executable(service_server src/service_server.cpp)
+add_executable(service_client src/service_client.cpp)
 
-add_dependencies(server_example ${server_example_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-add_dependencies(client_example ${server_example_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(action_server src/action_server.cpp)
+add_executable(action_client src/action_client.cpp)
+
+add_dependencies(service_server ${service_n_actionlib_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(service_client ${service_n_actionlib_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+add_dependencies(action_server ${service_n_actionlib_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(action_client ${service_n_actionlib_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -153,10 +158,16 @@ add_dependencies(client_example ${server_example_EXPORTED_TARGETS} ${catkin_EXPO
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(server_example
+target_link_libraries(service_server
   ${catkin_LIBRARIES}
 )
-target_link_libraries(client_example
+target_link_libraries(service_client
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(action_server
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(action_client
   ${catkin_LIBRARIES}
 )
 
