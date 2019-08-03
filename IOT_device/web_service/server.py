@@ -35,7 +35,6 @@ def startCherry():
 t = threading.Thread(target=startCherry)
 t.daemon = True
 t.start()
-print 'yoyo'
 
 while True:
     serin = ''
