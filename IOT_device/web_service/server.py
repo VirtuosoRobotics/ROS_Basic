@@ -9,6 +9,13 @@ import serial
 nanoSerial = serial.Serial("/dev/ttyUSB0", 9600)
 sonic_value = ''
 
+config = {
+    'global' : {
+        'server.socket_host' : '0.0.0.0',
+        'server.socket_port' : 8080
+    }
+}
+
 class HelloWorld(object):
     @cherrypy.expose
     def index(self):
@@ -17,17 +24,18 @@ class HelloWorld(object):
     @cherrypy.expose
     def greet(self, name):
         return 'Hello {}!'.format(name)
-        
+
     @cherrypy.expose
     def sonic(self):
-        return sonic_value
+        return 'ultrasonic value: ', sonic_value
 
 def startCherry():
-    cherrypy.quickstart(HelloWorld())
+    cherrypy.quickstart(HelloWorld(), '/',config)
 
 t = threading.Thread(target=startCherry)
 t.daemon = True
 t.start()
+print 'yoyo'
 
 while True:
     serin = ''
