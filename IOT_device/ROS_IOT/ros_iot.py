@@ -7,7 +7,7 @@ import serial
 import rospy
 from std_msgs.msg import *
 
-nanoSerial = serial.Serial("/dev/ttyUSB0", 9600)
+nanoSerial = serial.Serial("/dev/iot", 9600)
 sonic_value = '0'
 
 config = {
