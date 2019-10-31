@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <param name="input" value="world"/>
+
+    <node pkg="param_server" type="rosparam_local.py" name="rosparam_local" output="screen">
+        <rosparam file="$(find param_server)/param/param.yaml" command="load"/>
+    </node>
+
+    <node pkg="param_server" type="rosparam_global.py" name="rosparam_global" output="screen">
+    </node>
+    
+</launch>

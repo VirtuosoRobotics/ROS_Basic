@@ -33,5 +33,9 @@
         "typeindex": "cpp",
         "typeinfo": "cpp"
     },
-    "python.pythonPath": "/usr/bin/python"
+    "python.pythonPath": "/usr/bin/python",
+    "python.autoComplete.extraPaths": [
+        "/home/eric/catkin_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    ]
 }
