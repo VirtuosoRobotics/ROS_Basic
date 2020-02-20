@@ -1,0 +1,28 @@
+input {
+    margin-left: auto;
+    margin-right: auto;
+    background: #F0F8FF;
+    padding: 5px 5px 5px 5px;
+    font-size: 5vw;
+    width: 80%;
+    color: #00008B;
+}
+
+.button {
+    background-color: #FFA500;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5vw;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.button_red {
+    background-color: #FF0000;
+}
