@@ -25,7 +25,7 @@ config = {
 class RobotWeb(object):
 
     def __init__(self):
-        self.ros_master = '192.168.30.5'
+        self.ros_master = 'localhost'
         return
 
     @cherrypy.expose
